@@ -1,0 +1,59 @@
+/* src/styles/components.css */
+
+.btn {
+    width: 200px;
+    padding: 0.75rem 1.5rem;
+    margin: 0.5rem;
+    border: 1px solid #000;
+    background-color: #F6ECE4;
+    border-radius: 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .btn:hover {
+    background-color: #e0d5cb;
+  }
+  
+  .input-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .input-label {
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+  
+  .input-box {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #000;
+    border-radius: 8px;
+    background-color: #F6ECE4;
+  }
+
+  .logo-title {
+    font-size: 4rem;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .arrow-btn {
+    position: absolute;
+    bottom: 64px; /* 기존보다 위로 올리기 */
+    right: 48px;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+
+  .page-title {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+  }
+  
