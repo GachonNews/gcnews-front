@@ -10,46 +10,43 @@ const MyPage = () => {
     <div className="mypage-container">
       <div className="left-section">
         <div className="profile-card">
-          <div className="profile-image" />
-          <div className="profile-info">
-            <div className="info-row">
-              <label>이름</label>
-              <input
-                type="text"
-                value="김가천"
-                readOnly
-                className="info-input"
-              />
+          <div className="profile-content">
+            <div className="profile-image">
+              {/* 사용자 아이콘 */}
+              <div className="user-icon">
+                <div className="circle"></div>
+                <div className="body"></div>
+              </div>
             </div>
-            <div className="info-row">
-              <label>아이디</label>
-              <input
-                type="text"
-                value="gcnews"
-                readOnly
-                className="info-input"
-              />
+            <div className="profile-info">
+              <div className="info-row">
+                <div className="label">이름</div>
+                <div className="value">김가천</div>
+              </div>
+              <div className="info-row">
+                <div className="label">아이디</div>
+                <div className="value">gcnews</div>
+              </div>
+              <div className="info-row">
+                <div className="label">이메일</div>
+                <div className="value">gcnews@gachon.ac.kr</div>
+              </div>
+              <button
+                className="profile-button"
+                onClick={() => navigate("/edit")}
+              >
+                내 정보 확인/수정
+              </button>
             </div>
-            <div className="info-row">
-              <label>이메일</label>
-              <input
-                type="text"
-                value="gcnews@gachon.ac.kr"
-                readOnly
-                className="info-input"
-              />
-            </div>
-            <button
-              className="profile-button"
-              onClick={() => navigate("/edit")}
-            >
-              내 정보 확인/수정
-            </button>
           </div>
         </div>
 
-        <button className="side-button">🌙 다크 모드</button>
-        <button className="side-button">👤 친구 관리</button>
+        <div className="mode-button">
+          <span className="icon">🌙</span> 다크 모드
+        </div>
+        <div className="friend-button">
+          <span className="icon">👤</span> 친구 관리
+        </div>
       </div>
 
       <div className="divider" />

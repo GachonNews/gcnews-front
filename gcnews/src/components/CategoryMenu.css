@@ -1,0 +1,43 @@
+/* components/CategoryMenu.css */
+.category-menu-container {
+  background-color: #f6ece4;
+}
+
+.category-top-line {
+  height: 1px;
+  background-color: #000;
+}
+
+.categories {
+  padding: 10px 0;
+}
+
+.categories ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  justify-content: flex-start;
+  padding: 0 40px;
+}
+
+.categories li {
+  margin-right: 30px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.categories li.active {
+  color: #d43f3f;
+  font-weight: bold;
+}
+
+.categories a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.categories li.active a {
+  color: #d43f3f;
+}
