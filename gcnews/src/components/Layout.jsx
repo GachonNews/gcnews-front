@@ -1,10 +1,10 @@
 // src/components/Layout.jsx
-import { useLocation } from 'react-router-dom';
-import '../styles/Layout.css';
+import { Outlet, useLocation } from "react-router-dom";
+import "../styles/Layout.css";
 
-export default function Layout({ children }) {
+export default function Layout() {
   const location = useLocation();
-  const isHome = location.pathname === '/';
+  const isHome = location.pathname === "/";
 
   return (
     <div className="layout-wrapper">
@@ -16,9 +16,9 @@ export default function Layout({ children }) {
       {/* 상단 선 */}
       <div className="border-line top" />
 
-      {/* 메인 콘텐츠 영역 */}
+      {/* 메인 콘텐츠 영역 - children 대신 Outlet 사용 */}
       <main className="layout-content">
-        {children}
+        <Outlet />
       </main>
 
       {/* 하단 선 (공통 적용) */}

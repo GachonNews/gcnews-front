@@ -1,149 +1,163 @@
-.title {
-  font-size: 2.8rem;
-  font-weight: bold;
-  margin: 0;
+/* pages/MyPage.css */
+.mypage-container {
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0;
 }
 
-.mypage-container {
-  position: absolute;
-  top: 140px; /* GC NEWS + top-divider height */
-  bottom: 60px; /* bottom-divider 여백 */
-  left: 0;
-  right: 0;
+.left-section {
+  width: 50%;
+  min-width: 320px;
+  padding: 20px 0px 0px 20px;
+}
 
+.profile-card {
+  margin: 20px;
+}
+
+.profile-image {
+  width: 200px;
+  height: 200px;
+  background-color: #c2b5ae;
+  margin-bottom: 15px;
+  border-radius: 5px;
   display: flex;
   justify-content: center;
-  gap: 2rem;
-  overflow: hidden;
+  align-items: center;
 }
 
-.left-section,
-.right-section {
-  width: 100%;
-  max-width: 600px; /* ✅ 프로필 카드에 맞춤 */
+/* 사용자 아이콘 스타일 */
+.user-icon {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.divider {
-  width: 1px;
-  background-color: #333;
-  margin-top: 2rem; /* ✅ 위아래 선과 맞닿지 않도록 */
-  margin-bottom: 2rem;
+.circle {
+  width: 70px;
+  height: 70px;
+  border: 2px solid #333;
+  border-radius: 50%;
+  margin-bottom: 10px;
 }
 
-.profile-card {
-  width: 100%;
-  background-color: transparent !important;
-  max-width: 600px;
-  min-height: 100px;
+.body {
+  width: 120px;
+  height: 60px;
+  border: 2px solid #333;
+  border-radius: 60px 60px 0 0;
 }
-
-.profile-image {
-  width: 100px;
-  height: 100px;
-  background-color: #ccc;
-  border-radius: 10px;
-  margin-right: 1.5rem;
-  flex-shrink: 0;
+.profile-content {
+  display: flex;
+  gap: 20px;
+  align-items: center;
 }
 
 .profile-info {
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  gap: 10px;
 }
 
 .info-row {
   display: flex;
-  align-items: center;
-  margin-bottom: 0.4rem;
+  padding: 5px 10px;
 }
 
-.info-row label {
-  width: 60px;
+.label {
+  width: 70px;
   font-weight: bold;
-  font-size: 0.95rem;
+  font-size: 20px;
 }
 
-.info-input {
-  border: none;
-  background: transparent;
-  outline: none;
-  font-size: 0.95rem;
+.value {
   flex: 1;
+  font-size: 20px;
 }
 
 .profile-button {
-  align-self: flex-start;
-  margin-top: 0.7rem;
-  padding: 0.4rem 0.8rem;
+  background-color: #e0e0e0;
   border: none;
-  background-color: #ddd;
-  border-radius: 6px;
+  padding: 8px 12px;
+  border-radius: 20px;
+  margin-top: 15px;
   cursor: pointer;
-  font-size: 0.85rem;
+  width: 100%;
+  text-align: center;
 }
 
-.side-button {
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
-  border: none;
-  background-color: #ccc;
-  border-radius: 6px;
+/* 다크 모드 버튼 - 왼쪽 정렬 */
+.mode-button {
+  display: flex;
+  align-items: center;
+  padding: 20px;
   cursor: pointer;
+  text-align: left;
 }
 
-.side-button {
-  width: 80%;
+/* 친구 관리 버튼 - 왼쪽 정렬 */
+.friend-button {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.icon {
+  margin-right: 10px;
+  font-size: 24px;
+}
+
+.divider {
+  width: 1px;
+  background-color: #e0e0e0;
+}
+
+.right-section {
+  flex: 1;
+  padding: 20px 0px 0px 20px;
 }
 
 .news-title {
-  font-size: 1.2rem;
+  font-size: 23px;
   font-weight: bold;
-  margin-bottom: 1.5rem;
+  margin-bottom: 20px;
 }
 
 .news-list {
   list-style: none;
   padding: 0;
   margin: 0;
-  width: 100%;
 }
 
 .news-item {
   display: flex;
-  align-items: flex-start;
-  gap: 0.6rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 25px;
 }
 
 .bullet-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-right: 15px;
 }
 
 .diamond {
-  font-size: 0.8rem;
-  line-height: 1;
+  font-size: 14px;
 }
 
 .line {
-  width: 2px;
-  height: 30px; /* 줄 길이 조정 가능 */
-  background-color: black;
-  margin-top: 0.3rem;
-  margin-bottom: 0.3rem;
+  width: 1px;
+  height: 30px;
+  background-color: #000;
+  margin: 5px 0;
 }
 
 .news-text {
-  text-align: left;
-  line-height: 1.5;
-}
-
-.arrow {
-  margin-right: 0.5rem;
+  flex: 1;
+  padding-top: 5px;
+  font-size: 20px;
 }

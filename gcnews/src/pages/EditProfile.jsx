@@ -21,36 +21,45 @@ const EditProfile = () => {
   };
 
   return (
-    <div className="edit-container">
+    <div className="mypage-container">
       <div className="left-section">
         <div className="profile-card">
-          <div className="profile-image" />
+          <div className="profile-image">
+            {/* 사용자 아이콘 */}
+            <div className="user-icon">
+              <div className="circle"></div>
+              <div className="body"></div>
+            </div>
+          </div>
           <div className="profile-info">
             <div className="info-row">
-              <label>이름</label>
+              <div className="label">이름</div>
               <input
                 type="text"
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
+                className="edit-input"
               />
             </div>
             <div className="info-row">
-              <label>아이디</label>
+              <div className="label">아이디</div>
               <input
                 type="text"
                 name="username"
                 value={formData.username}
                 onChange={handleChange}
+                className="edit-input"
               />
             </div>
             <div className="info-row">
-              <label>이메일</label>
+              <div className="label">이메일</div>
               <input
                 type="email"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
+                className="edit-input"
               />
             </div>
             <button className="profile-button" onClick={handleSubmit}>
@@ -58,8 +67,14 @@ const EditProfile = () => {
             </button>
           </div>
         </div>
-        <button className="side-button">🌙 다크 모드</button>
-        <button className="side-button">👤 친구 관리</button>
+
+        {/* 동일한 메뉴 버튼 스타일 사용 */}
+        <div className="menu-button">
+          <span className="icon">🌙</span> 다크 모드
+        </div>
+        <div className="menu-button">
+          <span className="icon">👤</span> 친구 관리
+        </div>
       </div>
 
       <div className="divider" />
@@ -68,7 +83,12 @@ const EditProfile = () => {
         <div className="news-title">✏️ 내 정보 수정</div>
         <ul className="news-list">
           <li className="news-item">
-            <span className="arrow">📝</span> 수정 후 저장을 눌러주세요.
+            <div className="bullet-container">
+              <span className="diamond">◆</span>
+              <div className="line"></div>
+              <span className="diamond">◆</span>
+            </div>
+            <span className="news-text">수정 후 저장을 눌러주세요.</span>
           </li>
         </ul>
       </div>
