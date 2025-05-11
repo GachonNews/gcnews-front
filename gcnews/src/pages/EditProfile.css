@@ -1,0 +1,130 @@
+.edit-container {
+  position: absolute;
+  top: 140px; /* layout header + divider 고려 */
+  bottom: 60px;
+  left: 0;
+  right: 0;
+
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  overflow: hidden;
+  background-color: #f6eee8;
+}
+
+/* 왼쪽 섹션 */
+.left-section {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 오른쪽 섹션 */
+.right-section {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  overflow: hidden;
+}
+
+.divider {
+  width: 1px;
+  background-color: #333;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* 공통 프로필 카드 */
+.profile-card {
+  width: 100%;
+  background-color: transparent !important;
+  max-width: 600px;
+  min-height: 100px;
+  display: flex;
+}
+
+.profile-image {
+  width: 100px;
+  height: 100px;
+  background-color: #ccc;
+  border-radius: 10px;
+  margin-right: 1.5rem;
+  flex-shrink: 0;
+}
+
+.profile-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.info-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.4rem;
+  gap: 0.5rem;
+}
+
+.info-row label {
+  width: 60px;
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+.info-row input {
+  flex: 1;
+  padding: 0.3rem 0.5rem;
+  font-size: 0.95rem;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+/* 버튼들 */
+.profile-button {
+  align-self: flex-start;
+  margin-top: 0.7rem;
+  padding: 0.4rem 0.8rem;
+  border: none;
+  background-color: #ddd;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.side-button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 80%;
+}
+
+/* 오른쪽 안내 메시지 */
+.news-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.news-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.news-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}

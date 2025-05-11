@@ -1,0 +1,149 @@
+.title {
+  font-size: 2.8rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.mypage-container {
+  position: absolute;
+  top: 140px; /* GC NEWS + top-divider height */
+  bottom: 60px; /* bottom-divider 여백 */
+  left: 0;
+  right: 0;
+
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  overflow: hidden;
+}
+
+.left-section,
+.right-section {
+  width: 100%;
+  max-width: 600px; /* ✅ 프로필 카드에 맞춤 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.divider {
+  width: 1px;
+  background-color: #333;
+  margin-top: 2rem; /* ✅ 위아래 선과 맞닿지 않도록 */
+  margin-bottom: 2rem;
+}
+
+.profile-card {
+  width: 100%;
+  background-color: transparent !important;
+  max-width: 600px;
+  min-height: 100px;
+}
+
+.profile-image {
+  width: 100px;
+  height: 100px;
+  background-color: #ccc;
+  border-radius: 10px;
+  margin-right: 1.5rem;
+  flex-shrink: 0;
+}
+
+.profile-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.info-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.4rem;
+}
+
+.info-row label {
+  width: 60px;
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+.info-input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 0.95rem;
+  flex: 1;
+}
+
+.profile-button {
+  align-self: flex-start;
+  margin-top: 0.7rem;
+  padding: 0.4rem 0.8rem;
+  border: none;
+  background-color: #ddd;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.side-button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.side-button {
+  width: 80%;
+}
+
+.news-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.news-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.news-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.bullet-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.diamond {
+  font-size: 0.8rem;
+  line-height: 1;
+}
+
+.line {
+  width: 2px;
+  height: 30px; /* 줄 길이 조정 가능 */
+  background-color: black;
+  margin-top: 0.3rem;
+  margin-bottom: 0.3rem;
+}
+
+.news-text {
+  text-align: left;
+  line-height: 1.5;
+}
+
+.arrow {
+  margin-right: 0.5rem;
+}
