@@ -24,55 +24,54 @@ const EditProfile = () => {
     <div className="mypage-container">
       <div className="left-section">
         <div className="profile-card">
-          <div className="profile-image">
-            {/* 사용자 아이콘 */}
-            <div className="user-icon">
-              <div className="circle"></div>
-              <div className="body"></div>
+          <div className="profile-content">
+            <div className="profile-image">
+              <div className="user-icon">
+                <div className="circle"></div>
+                <div className="body"></div>
+              </div>
             </div>
-          </div>
-          <div className="profile-info">
-            <div className="info-row">
-              <div className="label">이름</div>
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                className="edit-input"
-              />
+            <div className="profile-info">
+              <div className="info-row">
+                <div className="label">이름</div>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="edit-input"
+                />
+              </div>
+              <div className="info-row">
+                <div className="label">아이디</div>
+                <input
+                  type="text"
+                  name="username"
+                  value={formData.username}
+                  onChange={handleChange}
+                  className="edit-input"
+                />
+              </div>
+              <div className="info-row">
+                <div className="label">이메일</div>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="edit-input"
+                />
+              </div>
+              <button className="profile-button" onClick={handleSubmit}>
+                저장
+              </button>
             </div>
-            <div className="info-row">
-              <div className="label">아이디</div>
-              <input
-                type="text"
-                name="username"
-                value={formData.username}
-                onChange={handleChange}
-                className="edit-input"
-              />
-            </div>
-            <div className="info-row">
-              <div className="label">이메일</div>
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                className="edit-input"
-              />
-            </div>
-            <button className="profile-button" onClick={handleSubmit}>
-              저장
-            </button>
           </div>
         </div>
-
-        {/* 동일한 메뉴 버튼 스타일 사용 */}
-        <div className="menu-button">
+        <div className="mode-button">
           <span className="icon">🌙</span> 다크 모드
         </div>
-        <div className="menu-button">
+        <div className="friend-button">
           <span className="icon">👤</span> 친구 관리
         </div>
       </div>
