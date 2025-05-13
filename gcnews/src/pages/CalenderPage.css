@@ -1,0 +1,66 @@
+/* src/pages/CalendarPage.css */
+.calendar-page {
+  background-color: #f6eee8;
+  padding: 20px;
+  text-align: center;
+}
+
+.calendar-buttons {
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px 15px;
+  margin: 10px;
+  background-color: #f1a7a7;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #e89797;
+}
+
+.calendar-day {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  margin: 10px;
+  background-color: #fff;
+  border-radius: 10px;
+  line-height: 50px;
+  text-align: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.calendar-day:hover {
+  background-color: #f1a7a7;
+}
+
+.selected {
+  background-color: #ffebcc;
+}
+
+.activity-item {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin-bottom: 10px;
+}
+
+.activity-item input {
+  margin-right: 10px;
+}
+
+.friend-button {
+  padding: 10px 20px;
+  margin: 5px;
+  background-color: #d3d3d3;
+  border: none;
+  cursor: pointer;
+}
+
+.friend-button.selected {
+  background-color: #a3a3a3;
+}
