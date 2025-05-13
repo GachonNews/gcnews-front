@@ -39,9 +39,22 @@
     text-align: center;
   }
   
+  .arrow-btn-container {
+  margin-top: 20px;  /* 폼 입력 영역과 버튼 사이의 공간 */
+  text-align: right;  /* 버튼을 우측으로 정렬 */
+  }
+
+
+  /* form 요소에 relative 위치 설정 */
+form {
+  position: relative;
+  padding-bottom: 90px; /* 하단 버튼 공간 확보 */
+}
+
+
   .arrow-btn {
     position: absolute;
-    bottom: 64px; /* 기존보다 위로 올리기 */
+    bottom: 64px; 
     right: 48px;
     font-size: 1.5rem;
     background: none;
