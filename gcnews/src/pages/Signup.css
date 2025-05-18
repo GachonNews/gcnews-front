@@ -1,0 +1,34 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;       /* 자식 요소 가운데 정렬 */
+    gap: 1.5rem;
+}
+
+.signup-container {
+    width: 100%;
+    max-width: 500px;          /* 너비 제한 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;       /* 자식 요소 가운데 정렬 */
+    gap: 1.5rem;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .signup-container label {
+    align-self: flex-start;
+    margin-left: 0.5rem;
+  }
+  
+  .signup-container input {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    border: 1px solid #000;
+    border-radius: 10px;
+    background-color: #F6ECE4;
+  }
+  
