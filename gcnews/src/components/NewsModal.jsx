@@ -21,13 +21,12 @@ const NewsModal = ({ isOpen, onClose, newsData }) => {
     return (
       <div className="news-modal-overlay">
         <div className="news-modal-content">
+          <div className="top-divider"></div>
           <button className="news-modal-close" onClick={handleClose}>
             ×
           </button>
 
           <div className="news-modal-body">
-            <div className="top-divider"></div>
-
             <h2 className="news-title">
               {newsData?.title || "뉴스 제목이 들어갈 자리입니다"}
             </h2>
@@ -54,6 +53,13 @@ const NewsModal = ({ isOpen, onClose, newsData }) => {
               </div>
             </div>
           </div>
+
+          <div className="news-footer-section">
+            <div className="news-footer">
+              <button className="news-answer-btn">정답 확인</button>
+            </div>
+          </div>
+          <div className="bottom-divider"></div>
         </div>
       </div>
     );
@@ -63,13 +69,12 @@ const NewsModal = ({ isOpen, onClose, newsData }) => {
   return (
     <div className="news-modal-overlay">
       <div className="news-modal-content">
+        <div className="top-divider"></div>
         <button className="news-modal-close" onClick={handleClose}>
           ×
         </button>
 
         <div className="news-modal-body">
-          <div className="top-divider"></div>
-
           <h2 className="news-title">
             {newsData?.title || "뉴스 제목이 들어갈 자리입니다"}
           </h2>
@@ -86,7 +91,6 @@ const NewsModal = ({ isOpen, onClose, newsData }) => {
         </div>
 
         <div className="news-footer-section">
-          <div className="bottom-divider"></div>
           <div className="news-footer">
             <p className="news-question">뉴스가 잘 이해됐는지 궁금하다면?</p>
             <button className="news-quiz-btn" onClick={handleQuizButtonClick}>
@@ -94,6 +98,7 @@ const NewsModal = ({ isOpen, onClose, newsData }) => {
             </button>
           </div>
         </div>
+        <div className="bottom-divider"></div>
       </div>
     </div>
   );
