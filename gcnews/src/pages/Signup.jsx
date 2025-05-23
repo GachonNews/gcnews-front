@@ -3,10 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import PageHeader from '../components/PageHeader';
 import PageTopLeftLabel from '../components/PageTopLeftLabel';
 import ArrowButton from '../components/ArrowButton';
+import { signupUser } from '../apis/auth';
 import './Signup.css';
 
 export default function Signup() {
   const navigate = useNavigate();
+
   const [form, setForm] = useState({
     name: '',
     id: '',
@@ -16,6 +18,7 @@ export default function Signup() {
   });
 
   const [errors, setErrors] = useState({});
+  const [apiError, setApiError] = useState(null);
 
   const handleChange = (e) => {
     setForm({
@@ -35,12 +38,26 @@ export default function Signup() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setApiError(null);
+
     if (!validate()) return;
 
-    console.log('회원가입 정보:', form);
-    navigate('/signup-complete');
+    try {
+      await signupUser({
+        name: form.name,
+        id: form.id,
+        email: form.email,
+        pw: form.pw,
+      });
+
+      alert("회원가입 성공!");
+      navigate('/signup-complete');
+    } catch(err){
+      setApiError(err.response?.data?.message || "회원가입 실패");
+    }
+    
   };
 
   return (
@@ -79,7 +96,7 @@ export default function Signup() {
             <input id="pwConfirm" name="pwConfirm" type="password" value={form.pwConfirm} onChange={handleChange} className="input-box" />
             {errors.pwConfirm && <div className="error-text">{errors.pwConfirm}</div>}
           </div>
-
+          {apiError && <p style={{ color: 'red'}}>{apiError}</p>}
           {/* 화살표 버튼 */}
           <ArrowButton type="submit" className="arrow-btn" />
         </form>
