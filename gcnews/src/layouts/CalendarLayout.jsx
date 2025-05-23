@@ -6,6 +6,9 @@ import ActivityDetail from '../components/ActivityDetail';
 import './CalendarLayout.css';
 
 const CalendarLayout = () => {
+  const currentDate = new Date(); // 여기로 이동
+  const [year, setYear] = useState(currentDate.getFullYear());
+  const [month, setMonth] = useState(currentDate.getMonth() + 1);
   const [selectedFriend, setSelectedFriend] = useState('me');
   const [selectedDate, setSelectedDate] = useState(null);
 
@@ -25,21 +28,19 @@ const CalendarLayout = () => {
     return acc;
   }, {});
 
-  const currentDate = new Date();
-  const currentYear = currentDate.getFullYear();
-  const currentMonth = currentDate.getMonth() + 1;
-
   return (
     <div className="calendar-layout">
       <GcNewsHeader />
       <main className="calendar-main-content">
         <div className="calendar-left-section">
           <Outlet context={{
-            year: currentYear,
-            month: currentMonth,
+            year,
+            month,
             data: calendarData,
             selectedDate,
-            onDateClick: setSelectedDate
+            onDateClick: setSelectedDate,
+            setYear,
+            setMonth
           }} />
         </div>
 
