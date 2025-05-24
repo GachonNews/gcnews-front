@@ -17,7 +17,11 @@
     left: 50%;
     transform: translate(-50%, -50%);
   }
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> 80a5f2b11ab1b751788e62ad4499435faa7af000
   .signup-container label {
     align-self: flex-start;
     margin-left: 0.5rem;
@@ -30,5 +34,21 @@
     border: 1px solid #000;
     border-radius: 10px;
     background-color: #F6ECE4;
+<<<<<<< HEAD
   }
+=======
+    box-sizing: border-box;
+  }
+
+  /* 오류 메시지 영역 */
+.error-text {
+  color: red;
+  font-size: 0.875rem;
+  margin-top: 5px;
+  height: 20px;
+  overflow: hidden;
+}
+  
+
+>>>>>>> 80a5f2b11ab1b751788e62ad4499435faa7af000
   
