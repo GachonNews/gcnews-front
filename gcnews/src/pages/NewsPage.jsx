@@ -45,42 +45,30 @@ const NewsPage = () => {
         {/* 첫 번째 큰 박스 */}
         <div className="right-box" onClick={() => openModal(1)}>
           <div className="sub-box"></div>
-          <div className="sub-box"></div>
-          <div className="sub-box"></div>
         </div>
 
         {/* 두 번째 큰 박스 */}
         <div className="right-box" onClick={() => openModal(1)}>
-          <div className="sub-box"></div>
-          <div className="sub-box"></div>
           <div className="sub-box"></div>
         </div>
 
         {/* 세 번째 큰 박스 */}
         <div className="right-box" onClick={() => openModal(1)}>
           <div className="sub-box"></div>
-          <div className="sub-box"></div>
-          <div className="sub-box"></div>
         </div>
 
         {/* 네 번째 큰 박스 */}
         <div className="right-box" onClick={() => openModal(1)}>
-          <div className="sub-box"></div>
-          <div className="sub-box"></div>
           <div className="sub-box"></div>
         </div>
 
         {/* 다섯 번째 큰 박스 */}
         <div className="right-box" onClick={() => openModal(1)}>
           <div className="sub-box"></div>
-          <div className="sub-box"></div>
-          <div className="sub-box"></div>
         </div>
 
         {/* 여섯 번째 큰 박스 */}
         <div className="right-box" onClick={() => openModal(1)}>
-          <div className="sub-box"></div>
-          <div className="sub-box"></div>
           <div className="sub-box"></div>
         </div>
       </div>
