@@ -1,10 +1,10 @@
 // src/pages/NewsPage.jsx
 import React, { useState, useEffect, useCallback, useMemo } from "react";
-import { useParams, useNavigate } from "react-router-dom"; // useNavigate 추가
+import { useParams } from "react-router-dom";
 import NewsModal from "../components/NewsModal";
 import OptimizedNewsItem from "../components/OptimizedNewsItem";
-import OptimizedLikeButton from "../components/OptimizedLikeButton";
-import { Brain, Calendar } from "lucide-react"; // Calendar 아이콘 추가
+import OptimizedLikeButton from "../components/OptimizedLikeButton"; // 새로 추가
+import { Brain } from "lucide-react"; // Brain 아이콘 추가
 import {
   getAllCategoryNews,
   getAllSubCategoryNews,
@@ -18,7 +18,6 @@ import "./NewsPage.css";
 
 const NewsPage = () => {
   const { category } = useParams();
-  const navigate = useNavigate(); // 네비게이션 훅 추가
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeNewsData, setActiveNewsData] = useState(null);
   const [topNews, setTopNews] = useState(null);
@@ -164,11 +163,6 @@ const NewsPage = () => {
   const handleTopNewsLike = useCallback((newsItem, isLiked) => {
     console.log(`톱 뉴스 좋아요 ${isLiked ? "추가" : "취소"}:`, newsItem.title);
   }, []);
-
-  // 캘린더 페이지로 이동
-  const handleCalendarClick = useCallback(() => {
-    navigate("/calendar");
-  }, [navigate]);
 
   const fetchNewsData = async () => {
     try {

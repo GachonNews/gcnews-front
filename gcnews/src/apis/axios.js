@@ -12,7 +12,7 @@ export const axiosInstance = axios.create({
 // 요청 인터셉터: accessToken 헤더 삽입
 axiosInstance.interceptors.request.use(
   (config) => {
-    const rawToken = localStorage.getItem(LOCAL_STORAGE_KEY.accessToken);
+    const rawToken = localStorage.getItem(LOCAL_STORAGE_KEY.token);
     const token = rawToken?.replace(/"/g, ""); // 큰따옴표 제거
 
     if (token) {
