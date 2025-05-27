@@ -47,9 +47,9 @@ export default function Signup() {
     try {
       await signupUser({
         name: form.name,
-        id: form.id,
+        loginId: form.id,
         email: form.email,
-        pw: form.pw,
+        password: form.pw,
       });
 
       alert("회원가입 성공!");
