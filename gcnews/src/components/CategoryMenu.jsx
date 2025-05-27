@@ -22,12 +22,15 @@ const CategoryMenu = () => {
   const categories = [
     { id: "latest", name: "최신", path: "/news" },
     { id: "economy", name: "경제", path: "/news/economy" },
-    { id: "finance", name: "금융", path: "/news/finance" },
+    { id: "financial-market", name: "금융", path: "/news/financial-market" },
     { id: "industry", name: "산업", path: "/news/industry" },
-    { id: "retail", name: "유통", path: "/news/retail" },
+    { id: "distribution", name: "유통", path: "/news/distribution" },
     { id: "it", name: "IT", path: "/news/it" },
-    { id: "global", name: "국제", path: "/news/global" },
   ];
+
+  const handleCategoryClick = (categoryId) => {
+    setActiveCategory(categoryId);
+  };
 
   return (
     <div className="category-menu-container">
@@ -40,7 +43,7 @@ const CategoryMenu = () => {
             >
               <Link
                 to={category.path}
-                onClick={() => setActiveCategory(category.id)}
+                onClick={() => handleCategoryClick(category.id)}
               >
                 {category.name}
               </Link>
