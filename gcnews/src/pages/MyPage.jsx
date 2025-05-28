@@ -1,10 +1,28 @@
-// src/pages/MyPage.jsx
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { fetchUserProfile } from "../apis/users";
+import { fetchRecapData } from "../apis/recap";
 import "./MyPage.css";
 
 const MyPage = () => {
   const navigate = useNavigate();
+  const [profile, setProfile] = useState(null);
+  const [recapData, setRecapData] = useState([]);
+
+  useEffect(() => {
+    fetchUserProfile()
+      .then((data) => setProfile(data))
+      .catch((err) => console.error(err));
+
+    fetchRecapData()
+      .then((titles) => {
+        console.log("✅ 뉴스 리캡 데이터 가져옴:", titles); // 확인용 로그.. 나중에 지우기
+        setRecapData(titles);
+      })
+      .catch((err) => console.error("❌ 뉴스 리캡 에러:", err.message));
+  }, []);
+  if (!profile)
+    return <div>로딩 중...profile: {JSON.stringify(profile, null, 2)}</div>;
 
   return (
     <div className="mypage-container">
@@ -12,7 +30,6 @@ const MyPage = () => {
         <div className="profile-card">
           <div className="profile-content">
             <div className="profile-image">
-              {/* 사용자 아이콘 */}
               <div className="user-icon">
                 <div className="circle"></div>
                 <div className="body"></div>
@@ -21,19 +38,19 @@ const MyPage = () => {
             <div className="profile-info">
               <div className="info-row">
                 <div className="label">이름</div>
-                <div className="value">김가천</div>
+                <div className="value">{profile.name}</div>
               </div>
               <div className="info-row">
                 <div className="label">아이디</div>
-                <div className="value">gcnews</div>
+                <div className="value">{profile.loginId}</div>
               </div>
               <div className="info-row">
                 <div className="label">이메일</div>
-                <div className="value">gcnews@gachon.ac.kr</div>
+                <div className="value">{profile.email}</div>
               </div>
               <button
                 className="profile-button"
-                onClick={() => navigate("/edit")}
+                onClick={() => navigate("/edit", { state: { profile } })}
               >
                 내 정보 확인/수정
               </button>
@@ -54,18 +71,20 @@ const MyPage = () => {
       <div className="right-section">
         <div className="news-title">❤️ 한 달 뉴스 리캡</div>
         <ul className="news-list">
-          {Array.from({ length: 5 }).map((_, i) => (
-            <li key={i} className="news-item">
-              <div className="bullet-container">
-                <span className="diamond">◆</span>
-                <div className="line" />
-                <span className="diamond">◆</span>
-              </div>
-              <span className="news-text">
-                뉴스 제목이 들어갈 자리입니다 뉴스 제목이 들어갈 자리입니다
-              </span>
-            </li>
-          ))}
+          {recapData.length > 0 ? (
+            recapData.map((title, index) => (
+              <li key={index} className="news-item">
+                <div className="bullet-container">
+                  <span className="diamond">◆</span>
+                  <div className="line" />
+                  <span className="diamond">◆</span>
+                </div>
+                <span className="news-text">{title}</span>
+              </li>
+            ))
+          ) : (
+            <li className="news-item">뉴스 리캡 데이터가 없습니다.</li>
+          )}
         </ul>
       </div>
     </div>

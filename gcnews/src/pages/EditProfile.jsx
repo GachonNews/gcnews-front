@@ -1,23 +1,34 @@
-// src/pages/EditProfile.jsx
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import { createUserProfile } from "../apis/users";
 import "./EditProfile.css";
 
 const EditProfile = () => {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    name: "김가천",
-    username: "gcnews",
-    email: "gcnews@gachon.ac.kr",
-  });
+  const location = useLocation();
+  const initialProfile = location.state?.profile;
+
+  const [formData, setFormData] = useState(
+    initialProfile || {
+      name: "",
+      loginId: "",
+      email: "",
+    }
+  );
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = () => {
-    navigate("/mypage");
+  const handleSubmit = async () => {
+    try {
+      await createUserProfile(formData);
+      navigate("/mypage"); // ✅ navigate 사용 권장 (SPA)
+    } catch (error) {
+      alert("프로필 저장에 실패했습니다.");
+      console.error(error);
+    }
   };
 
   return (
@@ -46,8 +57,8 @@ const EditProfile = () => {
                 <div className="label">아이디</div>
                 <input
                   type="text"
-                  name="username"
-                  value={formData.username}
+                  name="loginId"
+                  value={formData.loginId}
                   onChange={handleChange}
                   className="edit-input"
                 />
