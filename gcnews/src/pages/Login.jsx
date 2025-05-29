@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import {loginUser} from "../apis/auth";
+
 import { useNavigate } from 'react-router-dom';
 import Input from '../components/Input';
 import PageHeader from '../components/PageHeader';
@@ -7,7 +9,8 @@ import './Login.css';
 
 export default function Login() {
   const navigate = useNavigate();
-  const [form, setForm] = useState({ id: '', pw: '' });
+  const [form, setForm] = useState({ loginId: '', password: '' });
+  const [error, setError] = useState(null); // 에러 상태
 
   const handleChange = (e) => {
     setForm({
@@ -16,23 +19,47 @@ export default function Login() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('로그인 시도:', form);
+    
+    try {
+      const response = await loginUser ({ loginId: form.loginId, password: form.password });
+
+      localStorage.setItem("token", response.data.token);
+      alert("로그인 성공!");
+      navigate("/news");
+    } catch (err){
+      setError(err.response?.data?.message || "로그인 실패");
+    }
   };
 
   return (
     <div className='container'>
-        <div className="login-container">
-      <h2 className="form-title">로그인</h2>
+      <form className="login-container" onSubmit={handleSubmit}>
+        <h2 className="form-title">로그인</h2>
 
-      <label htmlFor="id">아이디</label>
-      <input id="id" type="text" />
+        <label htmlFor="loginId">아이디</label>
+        <input 
+          loginId="loginId" 
+          name = "loginId"
+          type="text"
+          value={form.loginId}
+          onChange={handleChange}
+        />
 
-      <label htmlFor="password">비밀번호</label>
-      <input id="password" type="password" />
-    </div>
-    <ArrowButton type="submit" />
+        <label htmlFor="password">비밀번호</label>
+        <input 
+          loginId="password" 
+          name="password"
+          type="password"
+          value={form.password}
+          onChange={handleChange} 
+        />
+
+        <ArrowButton type="submit"/>
+        {error && <p style={{color: "red"}}>{error}</p>}
+
+      </form>
     </div>
   );
 }
