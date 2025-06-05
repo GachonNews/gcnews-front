@@ -89,3 +89,74 @@ export const fetchMonthlyActivities = async (userId, year, month, isMe) => {
     return []; // 오류 시 빈 배열 반환
   }
 };
+
+
+export const addFriend = async (friendLoginId) => {
+  try {
+    // API 명세에 따라 body 구조가 달라질 수 있습니다.
+    // 예시: { friendId: "xxx" } 또는 { userId: "xxx" }
+    const body = { friendLoginId };
+    const res = await axiosInstance.post('/api/user-info/friend', body);
+
+    // 서버가 성공시 result: true, 실패시 false 반환한다고 가정
+    if (res && res.data && res.data.result !== undefined) {
+      return res.data.result;
+    }
+    // 성공 시 status code 200, 201 등만 체크하는 경우도 있음
+    return true;
+  } catch (error) {
+    console.error('addFriend: 친구 추가 실패', error.response ? error.response.data : error.message);
+    return false;
+  }
+};
+
+export const deleteFriend = async (friendId) => {
+  try {
+    const res = await axiosInstance.delete(`/api/user-info/friend/${friendId}`);
+    if (res && res.data && res.data.result !== undefined) {
+      return res.data.result;
+    }
+    return true;
+  } catch (error) {
+    console.error('deleteFriend: 친구 삭제 실패', error.response ? error.response.data : error.message);
+    return false;
+  }
+};
+
+export const fetchFriendDetailsList = async () => {
+  try {
+    const res = await axiosInstance.get('/api/user-info/friend');
+    console.log('fetchFriendDetailsList: 응답 데이터:', JSON.stringify(res.data, null, 2));
+    // 서버에서 data 필드에 전체 친구 리스트 배열이 담겨 반환됨을 가정
+    if (res?.data?.data) {
+      return res.data.data; // 예: [{ id, name, loginId, ... }, ...]
+    }
+    return [];
+  } catch (error) {
+    console.error('fetchFriendDetailsList: 조회 실패', error.response?.data || error.message);
+    return [];
+  }
+};
+
+// 친구 상세 정보 조회
+export const fetchFriendDetailsById = async (friendId) => {
+  console.log(`[fetchFriendDetailsById] friendId 요청 값:`, friendId);
+  
+  try {
+    const res = await axiosInstance.get(`/api/user-info/friend/${friendId}`);
+    console.log(`[fetchFriendDetailsById] friendId ${friendId} 응답 데이터:`, JSON.stringify({
+      status: res.status,
+      data: res.data.data // 실제 API 응답 구조 확인
+    }, null, 2));
+    
+    return res.data.data;
+  } catch (error) {
+    console.error(`[fetchFriendDetailsById] friendId ${friendId} 조회 실패:`, {
+      errorMessage: error.message,
+      responseData: error.response?.data,
+      statusCode: error.response?.status
+    });
+    throw new Error(`친구 상세 정보 조회 실패: ${error.message}`);
+  }
+};
+

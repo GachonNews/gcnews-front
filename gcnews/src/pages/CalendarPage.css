@@ -1,5 +1,7 @@
 /* CalendarPage.css (기존 내용 유지) */
-
+.calendar-container {
+    max-width: 1050px;
+  }
 /* Friend Selector 스타일 추가 */
 .category-menu-container {
     background-color: #f6ece4;
