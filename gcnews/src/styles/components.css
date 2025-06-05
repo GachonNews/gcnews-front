@@ -1,0 +1,72 @@
+/* src/styles/components.css */
+
+.btn {
+    width: 200px;
+    padding: 0.75rem 1.5rem;
+    margin: 0.5rem;
+    border: 1px solid #000;
+    background-color: #F6ECE4;
+    border-radius: 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .btn:hover {
+    background-color: #e0d5cb;
+  }
+  
+  .input-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .input-label {
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+  
+  .input-box {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #000;
+    border-radius: 8px;
+    background-color: #F6ECE4;
+  }
+
+  .logo-title {
+    font-size: 4rem;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .arrow-btn-container {
+  margin-top: 20px;  /* 폼 입력 영역과 버튼 사이의 공간 */
+  text-align: right;  /* 버튼을 우측으로 정렬 */
+  }
+
+
+  /* form 요소에 relative 위치 설정 */
+form {
+  position: relative;
+  padding-bottom: 90px; /* 하단 버튼 공간 확보 */
+}
+
+
+  .arrow-btn {
+    position: absolute;
+    bottom: 64px; 
+    right: 48px;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+
+  .page-title {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+  }
+  

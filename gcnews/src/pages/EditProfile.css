@@ -1,0 +1,9 @@
+.edit-input {
+  flex: 1;
+  font-size: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: #f6ece4;
+  width: 100%;
+}

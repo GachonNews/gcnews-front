@@ -1,0 +1,35 @@
+/* layouts/MainLayout.css */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&display=swap");
+
+/* 전체 레이아웃 */
+.main-layout {
+  font-family: "Noto Serif KR", serif;
+  max-width: 100%;
+  background-color: #f6ece4;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex: 1;
+}
+
+/* 메인 콘텐츠 */
+.content {
+  flex: 1;
+  display: flex;
+  padding: 0;
+  margin: 0;
+  justify-content: stretch; /* 또는 생략 가능 */
+  align-items: stretch; /* 세로도 꽉 차게 하려면 */
+}
+
+.content > * {
+  flex: 1;
+  width: 100%;
+}
+
+/* 푸터 */
+.footer {
+  border-top: 1px solid #000;
+  height: 50px;
+  background-color: #f6ece4;
+}

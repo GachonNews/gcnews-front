@@ -1,0 +1,166 @@
+/* pages/MyPage.css */
+.mypage-container {
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.left-section {
+  width: 50%;
+  min-width: 320px;
+  padding: 20px 0px 0px 20px;
+}
+
+.profile-card {
+  margin: 20px;
+}
+
+.profile-image {
+  width: 200px;
+  height: 200px;
+  background-color: #c2b5ae;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 사용자 아이콘 스타일 */
+.user-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.circle {
+  width: 70px;
+  height: 70px;
+  border: 2px solid #333;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.body {
+  width: 120px;
+  height: 60px;
+  border: 2px solid #333;
+  border-radius: 60px 60px 0 0;
+}
+.profile-content {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.profile-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.info-row {
+  display: flex;
+  padding: 5px 10px;
+}
+
+.label {
+  width: 70px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.value {
+  flex: 1;
+  font-size: 20px;
+}
+
+.profile-button {
+  background-color: #e0e0e0;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 20px;
+  margin-top: 15px;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+}
+
+/* 다크 모드 버튼 - 왼쪽 정렬 */
+.mode-button {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  cursor: pointer;
+  text-align: left;
+}
+
+/* 친구 관리 버튼 - 왼쪽 정렬 */
+.friend-button {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.icon {
+  margin-right: 10px;
+  font-size: 24px;
+}
+
+.divider {
+  width: 1px;
+  background-color: #e0e0e0;
+}
+
+.right-section {
+  flex: 1;
+  padding: 20px 0px 0px 20px;
+}
+
+.news-title {
+  font-size: 23px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.news-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.news-item {
+  display: flex;
+  align-items: center; /* 가운데 정렬 */
+  margin-bottom: 25px;
+}
+
+.bullet-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 12px;
+
+  height: 40px;
+  justify-content: center;
+}
+
+.diamond {
+  font-size: 10px;
+  line-height: 1;
+}
+
+.line {
+  width: 1px;
+  height: 10px;
+  background-color: #000;
+  margin: 2px 0;
+}
+
+.news-text {
+  font-size: 20px;
+}
