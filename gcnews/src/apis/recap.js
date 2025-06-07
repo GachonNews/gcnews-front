@@ -21,7 +21,7 @@ export const fetchRecapData = async (yearMonth = getCurrentYearMonth()) => {
     if (data.status === "success") {
       return data.data.map((article) => ({
         title: article.title,
-        articleLink: article.articleLink // 추가된 부분
+        articleLink: article.aricleLink // 추가된 부분
       }));
     } else {
       throw new Error(data.message || "뉴스 리캡 응답 실패");
