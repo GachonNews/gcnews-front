@@ -9,8 +9,7 @@ import Layout from "./components/Layout";
 import MainLayout from "./layouts/MainLayout";
 import MyPageLayout from "./layouts/MyPageLayout";
 import NewsPage from "./pages/NewsPage";
-import CalendarPage from "./pages/CalendarPage"; // CalendarPage import 추가
-import CalendarLayout from "./layouts/CalendarLayout"; // 새로운 레이아웃 import
+import CalendarPage from "./pages/CalendarPage";
 
 export default function App() {
   return (
@@ -28,16 +27,12 @@ export default function App() {
           <Route path="/news" element={<NewsPage />} />
           <Route path="/news/:category" element={<NewsPage />} />
         </Route>
-        {/* 마이페이지 레이아웃 (마이페이지, 프로필 수정 등) */}
+        {/* 마이페이지 레이아웃 (마이페이지, 프로필 수정, 캘린더 등) */}
         <Route element={<MyPageLayout />}>
           <Route path="/mypage" element={<MyPage />} />
           <Route path="/edit" element={<EditProfile />} />
+          <Route path="/calendar" element={<CalendarPage />} />
         </Route>
-        {/* 캘린더 페이지 */}
-        <Route path="/calendar" element={<CalendarLayout />}>
-          <Route index element={<CalendarPage />} />
-        </Route>
-        {/* /calendar 경로로 CalendarPage 추가 */}
       </Routes>
     </BrowserRouter>
   );

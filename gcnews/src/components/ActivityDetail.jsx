@@ -3,11 +3,20 @@ import React from "react";
 
 const ActivityDetail = ({ date, activities }) => {
   return (
-    <div style={{ marginTop: "2rem", textAlign: "left" }}>
+    <div style={{ marginTop: "2px", textAlign: "left", marginBottom: "10px" }}>
       <h3>{date} 활동 내역</h3>
-      <ul>
+      <ul
+        style={{
+          listStyleType: "disc",
+          paddingLeft: "20px",
+          marginTop: "10px",
+          marginLeft: "5px",
+        }}
+      >
         {activities.map((act, i) => (
-          <li key={i}>{act}</li>
+          <li key={i} style={{ marginBottom: "5px" }}>
+            {act}
+          </li>
         ))}
       </ul>
     </div>

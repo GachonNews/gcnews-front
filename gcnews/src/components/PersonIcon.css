@@ -1,0 +1,183 @@
+/* src/components/PersonIcon.css */
+
+.person-icon-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.person-icon-svg {
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+}
+
+/* 기본 스타일 */
+.person-icon-wrapper.default {
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.person-icon-wrapper.default:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  transform: translateY(-1px);
+}
+
+.person-icon-wrapper.default:hover .person-icon-svg {
+  stroke: #4575f6;
+  filter: drop-shadow(0 2px 4px rgba(69, 117, 246, 0.3));
+}
+
+/* 원형 스타일 */
+.person-icon-wrapper.circle {
+  padding: 8px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+  border: 2px solid #e9ecef;
+  width: 60px; /* 고정 너비 */
+  height: 60px; /* 고정 높이 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.person-icon-wrapper.circle:hover {
+  background: #c2abab;
+  border-color: #c2abab;
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 4px 8px rgba(194, 171, 171, 0.15),
+    0 2px 4px rgba(194, 171, 171, 0.1);
+}
+
+.person-icon-wrapper.circle:hover .person-icon-svg {
+  stroke: white;
+}
+
+/* 둥근 사각형 스타일 */
+.person-icon-wrapper.rounded {
+  padding: 10px;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e5e7eb;
+}
+
+.person-icon-wrapper.rounded:hover {
+  background: #4575f6;
+  border-color: #4575f6;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(69, 117, 246, 0.25),
+    0 2px 4px rgba(69, 117, 246, 0.15);
+}
+
+.person-icon-wrapper.rounded:hover .person-icon-svg {
+  stroke: white;
+}
+
+/* 그라데이션 스타일 */
+.person-icon-wrapper.gradient {
+  padding: 12px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3),
+    0 2px 8px rgba(118, 75, 162, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.person-icon-wrapper.gradient::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.2) 0%,
+    transparent 50%
+  );
+  pointer-events: none;
+}
+
+.person-icon-wrapper.gradient .person-icon-svg {
+  stroke: white;
+  position: relative;
+  z-index: 1;
+}
+
+.person-icon-wrapper.gradient:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4),
+    0 3px 12px rgba(118, 75, 162, 0.3);
+}
+
+/* 활성 상태 */
+.person-icon-wrapper.active {
+  background: #c2abab !important;
+  border-color: #c2abab !important;
+  box-shadow: 0 0 0 2px rgba(194, 171, 171, 0.15),
+    0 3px 6px rgba(194, 171, 171, 0.12) !important;
+}
+
+.person-icon-wrapper.active .person-icon-svg {
+  stroke: white !important;
+}
+
+/* 크기별 스타일 조정 */
+.person-icon-wrapper[data-size="small"] {
+  padding: 6px;
+}
+
+.person-icon-wrapper[data-size="medium"] {
+  padding: 8px;
+}
+
+.person-icon-wrapper[data-size="large"] {
+  padding: 12px;
+}
+
+/* 애니메이션 효과 */
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.person-icon-wrapper.pulse {
+  animation: pulse 2s infinite;
+}
+
+/* 접근성 */
+.person-icon-wrapper:focus {
+  outline: 2px solid #4575f6;
+  outline-offset: 2px;
+}
+
+.person-icon-wrapper:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* 다크 모드 지원 */
+@media (prefers-color-scheme: dark) {
+  .person-icon-wrapper.default {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+
+  .person-icon-wrapper.circle {
+    background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
+    border-color: #374151;
+  }
+
+  .person-icon-wrapper.rounded {
+    background: #1f2937;
+    border-color: #374151;
+  }
+}

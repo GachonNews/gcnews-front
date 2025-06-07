@@ -3,8 +3,9 @@ import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import NewsModal from "../components/NewsModal";
 import OptimizedNewsItem from "../components/OptimizedNewsItem";
-import OptimizedLikeButton from "../components/OptimizedLikeButton"; // 새로 추가
-import { Brain } from "lucide-react"; // Brain 아이콘 추가
+import OptimizedLikeButton from "../components/OptimizedLikeButton";
+import MiniCalendar from "../components/MiniCalendar";
+import { Brain } from "lucide-react";
 import {
   getAllCategoryNews,
   getAllSubCategoryNews,
@@ -40,7 +41,6 @@ const NewsPage = () => {
     console.log("AI 요약 요청:", newsItem.title);
 
     try {
-      // 조회수 증가, AI 요약, 퀴즈 API를 동시에 호출
       console.log(
         "조회수 증가, AI 요약, 퀴즈 API 호출 시작:",
         newsItem.crawlingId
@@ -56,30 +56,22 @@ const NewsPage = () => {
       console.log("AI 요약 API 응답:", summaryResponse);
       console.log("퀴즈 API 응답:", quizResponse);
 
-      // AI 요약 API 응답 구조에 맞춰 요약 내용 추출
       const summaryContent = summaryResponse?.data?.summaryContent;
-
-      // 퀴즈 API 응답 구조에 맞춰 퀴즈 데이터 추출
       const quizData = quizResponse?.data;
 
       if (summaryContent) {
-        // 요약이 성공하면 content를 요약으로 교체하고 퀴즈 데이터도 함께 전달
         const newsWithSummary = {
           ...newsItem,
           content: summaryContent,
           title: `[AI 요약] ${newsItem.title}`,
-          // 퀴즈 데이터 추가 (API 응답 키에 맞춰 수정)
-          quizQuestion: quizData?.quizContent, // quizContent -> quizQuestion
+          quizQuestion: quizData?.quizContent,
           quizAnswer: quizData?.quizAnswer,
         };
 
         setActiveNewsData(newsWithSummary);
         setIsModalOpen(true);
         console.log("AI 요약 성공:", summaryContent);
-        console.log("퀴즈 데이터:", quizData);
-        console.log("전달될 newsData:", newsWithSummary); // 디버깅용
       } else {
-        // 요약 데이터가 없으면 에러 메시지를 content로 설정
         const newsWithError = {
           ...newsItem,
           content: "요약 정보를 가져올 수 없습니다.",
@@ -92,7 +84,6 @@ const NewsPage = () => {
     } catch (error) {
       console.error("API 호출 실패:", error);
 
-      // 조회수 API는 실패해도 AI 요약만 다시 시도
       try {
         console.log("AI 요약과 퀴즈만 재시도:", newsItem.crawlingId);
         const [summaryResponse, quizResponse] = await Promise.all([
@@ -108,15 +99,13 @@ const NewsPage = () => {
             ...newsItem,
             content: summaryContent,
             title: `[AI 요약] ${newsItem.title}`,
-            quizQuestion: quizData?.quizContent, // quizContent -> quizQuestion
+            quizQuestion: quizData?.quizContent,
             quizAnswer: quizData?.quizAnswer,
           };
 
           setActiveNewsData(newsWithSummary);
           setIsModalOpen(true);
           console.log("AI 요약 재시도 성공:", summaryContent);
-          console.log("재시도 퀴즈 데이터:", quizData);
-          console.log("재시도 전달될 newsData:", newsWithSummary); // 디버깅용
           return;
         }
       } catch (retryError) {
@@ -128,7 +117,6 @@ const NewsPage = () => {
           ? "해당 뉴스의 요약이 아직 준비되지 않았습니다."
           : "AI 요약을 가져오는 중 오류가 발생했습니다.";
 
-      // 에러 메시지를 content로 설정해서 모달 열기
       const newsWithError = {
         ...newsItem,
         content: errorMessage,
@@ -152,6 +140,7 @@ const NewsPage = () => {
     }
   }, []);
 
+  // 텍스트 자르기 함수
   const truncateText = useCallback((text, maxLength = 30) => {
     if (!text) return "";
     return text.length > maxLength
@@ -159,11 +148,12 @@ const NewsPage = () => {
       : text;
   }, []);
 
-  // 톱 뉴스 좋아요 핸들러 (단순히 로그만)
+  // 톱 뉴스 좋아요 핸들러
   const handleTopNewsLike = useCallback((newsItem, isLiked) => {
     console.log(`톱 뉴스 좋아요 ${isLiked ? "추가" : "취소"}:`, newsItem.title);
   }, []);
 
+  // 뉴스 데이터 가져오기
   const fetchNewsData = async () => {
     try {
       setLoading(true);
@@ -228,6 +218,7 @@ const NewsPage = () => {
     }
   };
 
+  // 모달 닫기
   const closeModal = () => {
     setIsModalOpen(false);
     setActiveNewsData(null);
@@ -236,10 +227,12 @@ const NewsPage = () => {
   // 오른쪽 섹션에 표시할 뉴스 (15개)
   const rightSectionNews = useMemo(() => newsList.slice(0, 15), [newsList]);
 
+  // 컴포넌트 마운트 시 데이터 로드
   useEffect(() => {
     fetchNewsData();
   }, [category]);
 
+  // 로딩 상태
   if (loading) {
     return (
       <div className="news-home">
@@ -259,6 +252,7 @@ const NewsPage = () => {
     );
   }
 
+  // 에러 상태
   if (error) {
     return (
       <div className="news-home">
@@ -292,7 +286,7 @@ const NewsPage = () => {
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
-            position: "relative", // 버튼 배치를 위해 추가
+            position: "relative",
           }}
           onClick={() => topNews && handleNewsClick(topNews)}
         >
@@ -307,7 +301,7 @@ const NewsPage = () => {
                   : new Date().toLocaleDateString()}
               </p>
 
-              {/* AI 버튼과 좋아요 버튼 추가 */}
+              {/* AI 버튼과 좋아요 버튼 */}
               <div
                 className="main-news-actions"
                 style={{
@@ -355,11 +349,10 @@ const NewsPage = () => {
 
       {/* 오른쪽 컨테이너 */}
       <div className="right-container">
-        {/* 첫 번째 큰 박스 */}
+        {/* 첫 번째 박스 */}
         <div className="right-box">
           {Array.from({ length: 3 }).map((_, subIndex) => {
             const newsItem = rightSectionNews[subIndex];
-
             return newsItem ? (
               <OptimizedNewsItem
                 key={`news-item-${newsItem.crawlingId}`}
@@ -374,11 +367,10 @@ const NewsPage = () => {
           })}
         </div>
 
-        {/* 두 번째 큰 박스 */}
+        {/* 두 번째 박스 */}
         <div className="right-box">
           {Array.from({ length: 3 }).map((_, subIndex) => {
             const newsItem = rightSectionNews[3 + subIndex];
-
             return newsItem ? (
               <OptimizedNewsItem
                 key={`news-item-${newsItem.crawlingId}`}
@@ -393,11 +385,10 @@ const NewsPage = () => {
           })}
         </div>
 
-        {/* 세 번째 큰 박스 */}
+        {/* 세 번째 박스 */}
         <div className="right-box">
           {Array.from({ length: 3 }).map((_, subIndex) => {
             const newsItem = rightSectionNews[6 + subIndex];
-
             return newsItem ? (
               <OptimizedNewsItem
                 key={`news-item-${newsItem.crawlingId}`}
@@ -412,11 +403,10 @@ const NewsPage = () => {
           })}
         </div>
 
-        {/* 네 번째 큰 박스 */}
+        {/* 네 번째 박스 */}
         <div className="right-box">
           {Array.from({ length: 3 }).map((_, subIndex) => {
             const newsItem = rightSectionNews[9 + subIndex];
-
             return newsItem ? (
               <OptimizedNewsItem
                 key={`news-item-${newsItem.crawlingId}`}
@@ -431,11 +421,10 @@ const NewsPage = () => {
           })}
         </div>
 
-        {/* 다섯 번째 큰 박스 */}
+        {/* 다섯 번째 박스 */}
         <div className="right-box">
           {Array.from({ length: 3 }).map((_, subIndex) => {
             const newsItem = rightSectionNews[12 + subIndex];
-
             return newsItem ? (
               <OptimizedNewsItem
                 key={`news-item-${newsItem.crawlingId}`}
@@ -450,11 +439,9 @@ const NewsPage = () => {
           })}
         </div>
 
-        {/* 여섯 번째 큰 박스 - 비워둠 */}
-        <div className="right-box empty-box">
-          <div className="sub-box"></div>
-          <div className="sub-box"></div>
-          <div className="sub-box"></div>
+        {/* 여섯 번째 박스 - 미니 캘린더 */}
+        <div className="right-box calendar-box">
+          <MiniCalendar />
         </div>
       </div>
 

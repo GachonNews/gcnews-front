@@ -16,11 +16,12 @@ const MyPage = () => {
 
     fetchRecapData()
       .then((titles) => {
-        console.log("✅ 뉴스 리캡 데이터 가져옴:", titles); // 확인용 로그.. 나중에 지우기
+        console.log("✅ 뉴스 리캡 데이터 가져옴:", titles);
         setRecapData(titles);
       })
       .catch((err) => console.error("❌ 뉴스 리캡 에러:", err.message));
   }, []);
+
   if (!profile)
     return <div>로딩 중...profile: {JSON.stringify(profile, null, 2)}</div>;
 
@@ -57,12 +58,8 @@ const MyPage = () => {
             </div>
           </div>
         </div>
-
-        <div className="mode-button">
-          <span className="icon">🌙</span> 다크 모드
-        </div>
-        <div className="friend-button">
-          <span className="icon">👤</span> 친구 관리
+        <div className="friend-button" onClick={() => navigate("/calendar")}>
+          <span className="icon">📅</span> 활동 캘린더
         </div>
       </div>
 

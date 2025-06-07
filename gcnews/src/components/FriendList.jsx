@@ -26,12 +26,13 @@ const FriendList = ({ selectedFriendId, onSelect }) => {
   const [newFriend, setNewFriend] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [showAddForm, setShowAddForm] = useState(false);
 
   // 친구 프로필 정보 가져오기
   const fetchFriendProfile = async (friendId) => {
     try {
       const res = await axiosInstance.get(`/api/user-info/friend/${friendId}`);
-      return res.data.data; // { name, loginId, ... }
+      return res.data.data;
     } catch (error) {
       console.error(`친구 ${friendId} 상세 조회 실패:`, error);
       return null;
@@ -78,17 +79,20 @@ const FriendList = ({ selectedFriendId, onSelect }) => {
       if (!success) throw new Error("추가 실패");
       await loadFriends();
       setNewFriend("");
+      setShowAddForm(false);
       setError("");
     } catch (error) {
       setError(error.response?.data?.message || "친구 추가에 실패했습니다");
-      // 5초 후 자동 닫힘
       setTimeout(() => setError(""), 5000);
     }
     setLoading(false);
   };
 
   // 친구 삭제 핸들러
-  const handleDeleteFriend = async (friendId) => {
+  const handleDeleteFriend = async (friendId, e) => {
+    e.stopPropagation();
+    if (!window.confirm("정말 이 친구를 삭제하시겠습니까?")) return;
+
     setLoading(true);
     try {
       const success = await deleteFriend(friendId);
@@ -103,51 +107,83 @@ const FriendList = ({ selectedFriendId, onSelect }) => {
   };
 
   return (
-    <div className="friend-list-container">
+    <div className="circle-friend-list">
       {/* 에러 팝업 */}
       {error && <ErrorPopup message={error} onClose={() => setError("")} />}
 
-      {/* 친구 추가 입력 폼 */}
-      <form className="friend-add-form" onSubmit={handleAddFriend}>
-        <input
-          type="text"
-          value={newFriend}
-          onChange={(e) => setNewFriend(e.target.value)}
-          placeholder="친구 ID 입력"
+      {/* 헤더 */}
+      <div className="friend-list-header">
+        <h3 className="friend-list-title">친구 목록</h3>
+        <button
+          className="add-friend-toggle"
+          onClick={() => setShowAddForm(!showAddForm)}
           disabled={loading}
-        />
-        <button type="submit" disabled={loading}>
-          {loading ? "추가 중..." : "추가"}
+        >
+          {showAddForm ? "✕" : "+"}
         </button>
-      </form>
+      </div>
 
-      {/* 친구 목록 */}
-      {friends.length > 0 ? (
-        friends.map((friend) => (
-          <div className="friend-item" key={friend.id}>
-            <button
-              onClick={() => onSelect && onSelect(friend.id)}
-              className={`friend-button ${
-                selectedFriendId === friend.id ? "selected" : ""
-              }`}
+      {/* 친구 추가 폼 */}
+      {showAddForm && (
+        <form className="friend-add-form" onSubmit={handleAddFriend}>
+          <div className="add-form-group">
+            <input
+              type="text"
+              value={newFriend}
+              onChange={(e) => setNewFriend(e.target.value)}
+              placeholder="친구 ID 입력"
               disabled={loading}
-            >
-              <PersonIcon className="friend-icon" />
-              <span className="friend-name">{friend.name}</span>
-            </button>
+              className="add-friend-input"
+            />
             <button
-              className="friend-delete-btn"
-              onClick={() => handleDeleteFriend(friend.id)}
-              disabled={loading}
-              title="삭제"
+              type="submit"
+              disabled={loading || !newFriend.trim()}
+              className="add-friend-btn"
             >
-              ×
+              추가
             </button>
           </div>
-        ))
-      ) : (
-        <p className="friend-empty">친구 정보가 없습니다.</p>
+        </form>
       )}
+
+      {/* 원형 친구 목록 */}
+      <div className="circle-friends-container">
+        {friends.length > 0 ? (
+          friends.map((friend) => (
+            <div
+              key={friend.id}
+              className={`circle-friend-item ${
+                selectedFriendId === friend.id ? "selected" : ""
+              }`}
+              onClick={() => onSelect && onSelect(friend.id)}
+            >
+              <div className="circle-avatar">
+                <PersonIcon
+                  variant="circle"
+                  size={40}
+                  isActive={selectedFriendId === friend.id}
+                />
+                <button
+                  className="delete-overlay"
+                  onClick={(e) => handleDeleteFriend(friend.id, e)}
+                  disabled={loading}
+                  title="삭제"
+                >
+                  ×
+                </button>
+              </div>
+              <span className="circle-friend-name">{friend.name}</span>
+            </div>
+          ))
+        ) : (
+          <div className="empty-friends">
+            <div className="empty-circle">
+              <PersonIcon variant="circle" size={36} />
+            </div>
+            <span className="empty-text">친구 없음</span>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

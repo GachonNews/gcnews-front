@@ -1,48 +1,56 @@
-/* CalendarPage.css (기존 내용 유지) */
-.calendar-container {
-  max-width: 1050px;
-}
-/* Friend Selector 스타일 추가 */
-.category-menu-container {
-  background-color: #f6ece4;
-  margin-bottom: 1rem; /* 달력과의 간격 조절 */
-}
-
-.categories {
-  padding: 10px 0;
-}
-
-.categories ul {
+/* CalendarPage.css - 스크롤 없이 화면에 딱 맞는 크기 */
+.calendar-page-container {
   display: flex;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  justify-content: flex-start;
-  padding: 0 40px;
+  width: 100%;
+  height: calc(89vh - 200px); /* 헤더와 푸터를 제외한 높이 */
+  box-sizing: border-box;
+  padding: 15px;
+  gap: 15px;
+  overflow: hidden; /* 스크롤 방지 */
 }
 
-.categories li {
-  margin-right: 30px;
-  padding: 5px 10px;
-  cursor: pointer;
-  font-size: 18px;
+.calendar-left-section {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
-.categories li.active {
-  color: #d43f3f;
-  font-weight: bold;
+.calendar-right-section {
+  flex: 1;
+  min-width: 250px;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 15px;
+  border-left: 1px solid #e0e0e0;
+  height: 100%;
+  overflow-y: auto;
 }
 
-button {
-  padding: 10px 20px;
-  background-color: #008cba;
-  color: black;
-  border: none;
-  cursor: pointer;
-  font-size: 1.2rem;
-  border-radius: 5px;
+/* 캘린더 컨테이너를 작게 조정 */
+.calendar-container {
+  width: 100%;
+  max-width: 700px; /* 최대 너비 제한으로 크기 조절 */
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-button:hover {
-  background-color: #005f7f;
+/* FriendList 컴포넌트를 위한 스타일 조정 */
+.calendar-right-section .friend-list-container {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+/* ActivityDetail을 위한 스타일 */
+.calendar-right-section .activity-detail {
+  width: 100%;
+  margin-top: 1rem;
 }
