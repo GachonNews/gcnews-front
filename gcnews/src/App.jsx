@@ -9,8 +9,8 @@ import Layout from "./components/Layout";
 import MainLayout from "./layouts/MainLayout";
 import MyPageLayout from "./layouts/MyPageLayout";
 import NewsPage from "./pages/NewsPage";
-import CalendarPage from './pages/CalendarPage';  // CalendarPage import 추가
-import CalendarLayout from './layouts/CalendarLayout'; // 새로운 레이아웃 import
+import CalendarPage from "./pages/CalendarPage"; // CalendarPage import 추가
+import CalendarLayout from "./layouts/CalendarLayout"; // 새로운 레이아웃 import
 
 export default function App() {
   return (
@@ -34,8 +34,8 @@ export default function App() {
           <Route path="/edit" element={<EditProfile />} />
         </Route>
         {/* 캘린더 페이지 */}
-        <Route element={<CalendarLayout />}>
-          <Route path="/calendar" element={<CalendarPage />} />
+        <Route path="/calendar" element={<CalendarLayout />}>
+          <Route index element={<CalendarPage />} />
         </Route>
         {/* /calendar 경로로 CalendarPage 추가 */}
       </Routes>

@@ -30,7 +30,7 @@ const NewsPage = () => {
     economy: "경제",
     finance: "금융",
     industry: "산업",
-    retail: "유통",
+    distribution: "유통",
     it: "IT",
     global: "국제",
   };

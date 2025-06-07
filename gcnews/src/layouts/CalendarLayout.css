@@ -31,3 +31,91 @@
   background-color: #f6ece4;
   text-align: center;
 }
+
+.calendar-header-custom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* 양쪽 정렬을 위해 변경 */
+  padding: 15px 25px; /* GcNewsHeader와 유사한 패딩 */
+  background-color: #fbf7f4; /* 배경색 통일 또는 원하는 색상 */
+  border-bottom: 1px solid #e0e0e0; /* 구분선 */
+}
+
+.calendar-header-custom h1 {
+  /* GC NEWS 타이틀 스타일 */
+  font-size: 2.2em; /* GcNewsHeader와 유사하게 */
+  font-weight: bold;
+  margin: 0; /* 불필요한 마진 제거 */
+  /* 중앙 정렬은 flexGrow와 textAlign으로 부모에서 처리 */
+}
+
+.back-to-news-btn {
+  /* ArrowButton에 적용될 클래스 */
+  color: #333; /* 아이콘 색상 (SVG가 currentColor 사용 시) */
+  /* ArrowButton.jsx 자체에서 기본 스타일을 가질 수 있음 */
+}
+
+/* FriendList 버튼 스타일 (이전 제안된 내용) */
+.friend-list-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px; /* 버튼 사이 간격 */
+  margin-bottom: 20px;
+  justify-content: flex-start; /* 왼쪽 정렬 */
+  padding-top: 10px;
+}
+
+.friend-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* 아이콘과 텍스트 중앙 정렬 */
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 50%; /* 원형 버튼 */
+  width: 65px;
+  height: 65px;
+  padding: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.friend-button.selected {
+  border-color: #c63d2f; /* 선택 시 테두리 색상 (GC NEWS 테마색과 유사하게) */
+  background-color: #fdecea; /* 선택 시 배경색 (연한 붉은 계열) */
+  box-shadow: 0 2px 5px rgba(200, 61, 47, 0.2);
+}
+
+.friend-button:hover {
+  background-color: #f9f9f9;
+  border-color: #cccccc;
+}
+
+.friend-icon svg {
+  /* PersonIcon 내부 SVG 스타일링 예시 */
+  width: 22px;
+  height: 22px;
+  margin-bottom: 3px;
+  color: #555; /* 아이콘 기본 색상 */
+}
+
+.friend-button.selected .friend-icon svg {
+  color: #c63d2f; /* 선택된 버튼의 아이콘 색상 */
+}
+
+.friend-name {
+  font-size: 0.75rem;
+  color: #333;
+  text-align: center;
+  white-space: nowrap; /* 이름이 길 경우 줄바꿈 방지 (또는 다른 처리) */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.home-icon-btn {
+  /* 홈 아이콘 버튼 스타일 */
+  color: #333; /* 아이콘 색상 (SVG가 currentColor 사용 시) */
+  /* 필요시 추가 스타일 */
+}

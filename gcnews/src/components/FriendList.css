@@ -1,0 +1,140 @@
+.friend-list-container {
+  width: 100%;
+  max-width: 400px;
+}
+.friend-add-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 1rem;
+}
+.friend-add-form input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+}
+.friend-add-form button {
+  background: #3da9fc;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.friend-add-form button:disabled {
+  background: #b0d4f5;
+  cursor: not-allowed;
+}
+.friend-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.friend-button {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.friend-button:hover {
+  background: #f5f5f5;
+}
+.friend-button.selected {
+  background: #e3f2fd;
+}
+.friend-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+}
+.friend-name {
+  font-size: 14px;
+  color: #333;
+}
+.friend-delete-btn {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: #ff4444;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+.friend-delete-btn:hover {
+  color: #cc0000;
+}
+.friend-error {
+  color: #ff4444;
+  font-size: 14px;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.friend-empty {
+  color: #888;
+  text-align: center;
+  padding: 20px 0;
+}
+
+/* FriendList.css에 추가 */
+.error-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in;
+}
+.popup-backdrop {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+.popup-content {
+  position: relative;
+  background: #fff;
+  padding: 1.5rem 2rem;
+  border-radius: 12px;
+  min-width: 260px;
+  box-shadow: 0 6px 32px rgba(0, 0, 0, 0.18);
+  z-index: 1001;
+}
+.popup-content p {
+  margin: 0 0 1rem 0;
+  color: #d43f3f;
+  font-size: 1.1rem;
+}
+.popup-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  color: #555;
+  cursor: pointer;
+}
+.popup-close:hover {
+  color: #222;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

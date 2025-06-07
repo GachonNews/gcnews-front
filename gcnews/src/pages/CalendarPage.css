@@ -1,34 +1,36 @@
 /* CalendarPage.css (기존 내용 유지) */
-
+.calendar-container {
+  max-width: 1050px;
+}
 /* Friend Selector 스타일 추가 */
 .category-menu-container {
-    background-color: #f6ece4;
-    margin-bottom: 1rem; /* 달력과의 간격 조절 */
+  background-color: #f6ece4;
+  margin-bottom: 1rem; /* 달력과의 간격 조절 */
 }
 
 .categories {
-    padding: 10px 0;
+  padding: 10px 0;
 }
 
 .categories ul {
-    display: flex;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    justify-content: flex-start;
-    padding: 0 40px;
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  justify-content: flex-start;
+  padding: 0 40px;
 }
 
 .categories li {
-    margin-right: 30px;
-    padding: 5px 10px;
-    cursor: pointer;
-    font-size: 18px;
+  margin-right: 30px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 18px;
 }
 
 .categories li.active {
-    color: #d43f3f;
-    font-weight: bold;
+  color: #d43f3f;
+  font-weight: bold;
 }
 
 button {

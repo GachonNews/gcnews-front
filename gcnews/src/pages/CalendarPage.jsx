@@ -1,19 +1,31 @@
-import { useOutletContext } from 'react-router-dom';
-import Calendar from '../components/Calendar';
-import CalendarGrid from '../components/CalendarGrid';
+// CalendarPage.jsx
+import { useOutletContext } from "react-router-dom";
+import Calendar from "../components/Calendar";
 
 export default function CalendarPage() {
-  const { year, month, data, onDateClick, selectedDate } = useOutletContext(); // ✅ 꼭 이렇게
+  const {
+    year,
+    month,
+    data,
+    onDateClick,
+    selectedDate,
+    setYear,
+    setMonth,
+    today,
+  } = useOutletContext();
 
   return (
     <div className="calendar-container">
-      <h1 className="calendar-page-title"></h1>
+      {/* 기존 Calendar 컴포넌트 (변경 없음) */}
       <Calendar
         year={year}
         month={month}
         data={data}
         onDateClick={onDateClick}
         selectedDate={selectedDate}
+        setYear={setYear}
+        setMonth={setMonth}
+        today={today}
       />
     </div>
   );
