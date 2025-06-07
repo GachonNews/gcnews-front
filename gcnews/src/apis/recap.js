@@ -19,7 +19,10 @@ export const fetchRecapData = async (yearMonth = getCurrentYearMonth()) => {
     const { data } = await axiosInstance.get(`/api/article/recap/${yearMonth}`);
 
     if (data.status === "success") {
-      return data.data.map((article) => article.title);
+      return data.data.map((article) => ({
+        title: article.title,
+        articleLink: article.articleLink // 추가된 부분
+      }));
     } else {
       throw new Error(data.message || "뉴스 리캡 응답 실패");
     }

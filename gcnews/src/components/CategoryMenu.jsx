@@ -25,7 +25,7 @@ const CategoryMenu = () => {
     { id: "financial-market", name: "금융", path: "/news/financial-market" },
     { id: "industry", name: "산업", path: "/news/industry" },
     { id: "distribution", name: "유통", path: "/news/distribution" },
-    { id: "it", name: "IT", path: "/news/it" },
+    { id: "international", name: "국제", path: "/news/international" },
   ];
 
   const handleCategoryClick = (categoryId) => {

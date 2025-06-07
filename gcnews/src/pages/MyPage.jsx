@@ -68,20 +68,41 @@ const MyPage = () => {
       <div className="right-section">
         <div className="news-title">❤️ 한 달 뉴스 리캡</div>
         <ul className="news-list">
-          {recapData.length > 0 ? (
-            recapData.map((title, index) => (
+        {recapData.length > 0 ? (
+          recapData.map((item, index) => {
+            console.log("item: ", item);
+            const newsItem = typeof item === "string" ? { title: item } : item;
+            return (
               <li key={index} className="news-item">
                 <div className="bullet-container">
                   <span className="diamond">◆</span>
                   <div className="line" />
                   <span className="diamond">◆</span>
                 </div>
-                <span className="news-text">{title}</span>
+                {newsItem.articleLink ? (
+                  <a
+                  href={newsItem.articleLink}
+                  className="news-text"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    color: "black",         
+                    textDecoration: "none",  
+                    cursor: "pointer",
+                  }}
+                >
+                  {newsItem.title}
+                </a>
+                ) : (
+                  // 링크 없으면 그냥 텍스트
+                  <span className="news-text">{newsItem.title}</span>
+                )}
               </li>
-            ))
-          ) : (
-            <li className="news-item">뉴스 리캡 데이터가 없습니다.</li>
-          )}
+            );
+          })
+        ) : (
+          <li className="news-item">뉴스 리캡 데이터가 없습니다.</li>
+        )}
         </ul>
       </div>
     </div>
