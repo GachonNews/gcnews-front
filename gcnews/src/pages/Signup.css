@@ -1,39 +1,69 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;       /* 자식 요소 가운데 정렬 */
-    gap: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: none;
 }
 
 .signup-container {
-    width: 100%;
-    max-width: 500px;          /* 너비 제한 */
-    display: flex;
-    flex-direction: column;
-    align-items: center;       /* 자식 요소 가운데 정렬 */
-    gap: 1.5rem;
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
+  width: 100%;
+  max-width: 700px; /* 원하는 폼 크기 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
-  .signup-container label {
-    align-self: flex-start;
-    margin-left: 0.5rem;
-  }
-  
-  .signup-container input {
-    width: 100%;
-    padding: 1rem;
-    font-size: 1rem;
-    border: 1px solid #000;
-    border-radius: 10px;
-    background-color: #F6ECE4;
-    box-sizing: border-box;
-  }
+.signup-container label {
+  align-self: flex-start;
+  margin-left: 0.5rem;
+}
 
-  /* 오류 메시지 영역 */
+.signup-container input {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  border: 1px solid #000;
+  border-radius: 10px;
+  background-color: #f6ece4;
+  box-sizing: border-box;
+}
+
+/* form 스타일 수정 */
+.signup-container form {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* form 내용도 가운데 정렬 */
+  padding: 1.5rem;
+}
+
+/* input-group도 전체 너비 사용 */
+.signup-container .input-group {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+/* 화살표 버튼 위치 조정 */
+.signup-container .arrow-btn {
+  align-self: flex-end; /* 폼 내에서 오른쪽 정렬 */
+  margin-top: 20px;
+  margin-right: 20px; /* 폼 경계에서 약간 안쪽으로 */
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  /* position absolute 제거하여 자연스러운 배치 */
+}
+
+/* 오류 메시지 영역 */
 .error-text {
   color: red;
   font-size: 0.875rem;
@@ -41,6 +71,11 @@
   height: 20px;
   overflow: hidden;
 }
-  
 
-  
+.form-title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
