@@ -176,6 +176,11 @@ export default function CalendarPage() {
     }
   }, [selectedFriend, year, month, myProfile]);
 
+  // 친구 선택 핸들러 (토글 기능 포함)
+  const handleFriendSelect = (friendId) => {
+    setSelectedFriend(friendId);
+  };
+
   return (
     <div className="calendar-page-container">
       <div className="calendar-left-section">
@@ -198,7 +203,8 @@ export default function CalendarPage() {
         <FriendList
           friends={friendList}
           selectedFriendId={selectedFriend}
-          onSelect={(friendId) => setSelectedFriend(friendId)}
+          onSelect={handleFriendSelect}
+          myId={myProfile?.id} // 내 ID를 prop으로 전달
         />
         {selectedDate &&
           activityData[selectedDate] &&

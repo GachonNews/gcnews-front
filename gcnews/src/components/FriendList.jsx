@@ -21,7 +21,7 @@ const ErrorPopup = ({ message, onClose }) => (
   </div>
 );
 
-const FriendList = ({ selectedFriendId, onSelect }) => {
+const FriendList = ({ selectedFriendId, onSelect, myId }) => {
   const [friends, setFriends] = useState([]);
   const [newFriend, setNewFriend] = useState("");
   const [loading, setLoading] = useState(false);
@@ -106,6 +106,17 @@ const FriendList = ({ selectedFriendId, onSelect }) => {
     setLoading(false);
   };
 
+  // 친구 선택 핸들러 (토글 기능 추가)
+  const handleFriendSelect = (friendId) => {
+    if (selectedFriendId === friendId) {
+      // 이미 선택된 친구를 다시 클릭하면 내 기록으로 돌아가기
+      onSelect && onSelect(myId);
+    } else {
+      // 다른 친구 선택
+      onSelect && onSelect(friendId);
+    }
+  };
+
   return (
     <div className="circle-friend-list">
       {/* 에러 팝업 */}
@@ -155,7 +166,7 @@ const FriendList = ({ selectedFriendId, onSelect }) => {
               className={`circle-friend-item ${
                 selectedFriendId === friend.id ? "selected" : ""
               }`}
-              onClick={() => onSelect && onSelect(friend.id)}
+              onClick={() => handleFriendSelect(friend.id)}
             >
               <div className="circle-avatar">
                 <PersonIcon
